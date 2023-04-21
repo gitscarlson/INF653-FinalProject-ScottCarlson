@@ -242,3 +242,16 @@
 20230421	14:10:43	02d89b76-b9c2-4f9b-9026-b5ad0c242aef	GET	undefined	/css/style.css
 20230421	14:11:19	d6a09217-7083-4bcc-861b-d0f2451359d0	GET	undefined	/
 20230421	14:11:19	d4de5ac6-f4ff-406c-9c28-2ad0be11c9f1	GET	undefined	/css/style.css
+20230421	15:04:29	6450574d-65eb-4e21-a479-2ab1a7690a27	GET	undefined	/
+20230421	15:04:29	13261c39-1f6f-42e3-9032-213eb9b73220	GET	undefined	/css/style.css
+20230421	15:04:34	4b27f4ca-763c-4616-b495-9f78be833438	GET	undefined	/states
+20230421	15:04:34	fd35653d-74bc-4be6-86a4-3389f5708937	GET	undefined	/css/style.css
+20230421	15:04:44	73d7a64c-dd2f-4c9f-8983-b206d5d62712	GET	undefined	/states/KS
+20230421	15:04:44	48a5e0fb-b3b7-4817-b05d-f32d4abcb56e	GET	undefined	/states/css/style.css
+20230421	15:05:27	e50f7f3b-f8b9-42f8-967e-551fd442d9a6	GET	undefined	/
+20230421	15:05:28	89d67792-2cad-4dc9-b482-b3f11a6a8d91	GET	undefined	/css/style.css
+20230421	15:05:40	03675b32-65b9-46a6-81f1-628d700282a2	GET	undefined	/states/NB/population
+20230421	15:05:40	b7601591-80e7-4833-b9e6-64633206fef1	GET	undefined	/states/NB/css/style.css
+20230421	15:06:25	f620b20c-204c-44ab-9dc0-8da48e44cffc	GET	undefined	/
+20230421	15:06:25	6bc231c8-a0ed-496b-9fee-abf39e743908	GET	undefined	/css/style.css
+20230421	15:06:29	54e58bab-b2ac-4a3b-8124-b51296b1fb3d	GET	undefined	/states

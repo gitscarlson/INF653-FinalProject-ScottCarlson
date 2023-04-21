@@ -1,5 +1,6 @@
 const State = require('../model/State');
-//glitch testing URL  https://glitch.com/edit/#!/import/github/gitscarlson/INF653FinalProject_ScottCarlson
+//glitch testing URL  https://glitch.com/edit/#!/import/github/gitscarlson/INF653-FinalProject-ScottCarlson
+//mongodb+srv://scott73carlson:EmmntYY4@cluster0.wteysmi.mongodb.net/StatesDB?retryWrites=true&w=majority
 
 const data = {
     states: require('../model/statesData.json'),
