@@ -255,3 +255,7 @@
 20230421	15:06:25	f620b20c-204c-44ab-9dc0-8da48e44cffc	GET	undefined	/
 20230421	15:06:25	6bc231c8-a0ed-496b-9fee-abf39e743908	GET	undefined	/css/style.css
 20230421	15:06:29	54e58bab-b2ac-4a3b-8124-b51296b1fb3d	GET	undefined	/states
+20230421	15:23:59	68bd4695-30da-42ea-8228-ab18f406c719	GET	undefined	/
+20230421	15:23:59	cc379e12-a6b3-49ed-bc13-4422776cb96f	GET	undefined	/css/style.css
+20230421	15:24:05	1e04ffce-fc31-45dc-8bfb-381302a5117f	GET	undefined	/states
+20230421	15:31:36	aa9d57ef-c55d-4ab3-a290-46cec2391a14	GET	undefined	/states/KS
