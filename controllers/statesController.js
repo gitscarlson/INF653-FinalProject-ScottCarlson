@@ -28,7 +28,7 @@ const getStateCapital = (req, res) => {
     for(x = 0; x < data.states.length; x++) {
         let array = Object.entries(data.states).map(([key,value])=>value);
         if(code == array[x].code){
-            return res.json({"state":array[x].state,"capital":array[x].capital_city});
+            return res.status(201).json({"state":array[x].state,"capital":array[x].capital_city});
         }
     } 
     return res.json({"message":"Invalid state abbreviation parameter"});
