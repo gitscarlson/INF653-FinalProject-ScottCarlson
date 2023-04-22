@@ -1,6 +1,9 @@
 const express = require('express');
+const cors = require('cors');
 const router = express.Router();
 const statesController = require('../../controllers/statesController');
+
+app.use(cors());
 
 router.route('/')
     .get(statesController.getAllStates)
