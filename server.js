@@ -17,10 +17,6 @@ connectDB();
 // custom middleware logger
 app.use(logger);
 
-// Handle options credentials check - before CORS!
-// and fetch cookies credentials requirement
-//app.use(credentials);
-
 // Cross Origin Resource Sharing
 app.use(cors(corsOptions));
 
@@ -38,13 +34,7 @@ app.use('/', express.static(path.join(__dirname, '/public')));
 
 // routes 
 app.use('/', require('./routes/root'));
-//app.use('/register', require('./routes/register'));
-//app.use('/auth', require('./routes/auth'));
-//app.use('/refresh', require('./routes/refresh'));
-//app.use('/logout', require('./routes/logout'));
-
-//app.use(verifyJWT);
-app.use('/', require('./routes/api/states'));
+app.use('/states', require('./routes/api/states'));
 
 app.all('*', (req, res) => {
     res.status(404);
