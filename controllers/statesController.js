@@ -1,4 +1,5 @@
 const State = require('../model/State');
+const allowedOrigins = require('../config/allowedOrigins');
 //glitch testing URL  https://glitch.com/edit/#!/import/github/gitscarlson/INF653-FinalProject-ScottCarlson
 //mongodb+srv://scott73carlson:EmmntYY4@cluster0.wteysmi.mongodb.net/StatesDB?retryWrites=true&w=majority
 
@@ -23,6 +24,11 @@ const getAllStates = (req, res) => {
 }
 
 const getStateCapital = (req, res) => {
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.header('Access-Control-Allow-Credentials', true);
+    }
+
     let code = req.params.code;
     code = code.toUpperCase();
     for(x = 0; x < data.states.length; x++) {
