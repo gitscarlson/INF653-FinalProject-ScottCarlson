@@ -11,8 +11,6 @@ const mongoose = require('mongoose');
 const connectDB = require('./config/dbConn');
 const PORT = process.env.PORT || 3500;
 
-app.use(cors());
-
 // Connect to MongoDB
 connectDB();
 
@@ -46,7 +44,7 @@ app.use('/', require('./routes/root'));
 //app.use('/logout', require('./routes/logout'));
 
 //app.use(verifyJWT);
-app.use('/states', require('./routes/api/states'));
+app.use('/', require('./routes/api/states'));
 
 app.all('*', (req, res) => {
     res.status(404);
