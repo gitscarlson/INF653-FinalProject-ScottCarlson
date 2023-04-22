@@ -1,9 +1,6 @@
 const State = require('../model/State');
-const cors = require('cors');
 //glitch testing URL  https://glitch.com/edit/#!/import/github/gitscarlson/INF653-FinalProject-ScottCarlson
 //mongodb+srv://scott73carlson:EmmntYY4@cluster0.wteysmi.mongodb.net/StatesDB?retryWrites=true&w=majority
-
-app.use(cors());
 
 const data = {
     states: require('../model/statesData.json'),
