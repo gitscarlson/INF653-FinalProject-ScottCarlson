@@ -24,17 +24,12 @@ const getAllStates = (req, res) => {
 }
 
 const getStateCapital = (req, res) => {
-    const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
-        res.header('Access-Control-Allow-Credentials', true);
-    }
-
     let code = req.params.code;
     code = code.toUpperCase();
     for(x = 0; x < data.states.length; x++) {
         let array = Object.entries(data.states).map(([key,value])=>value);
         if(code == array[x].code){
-            return res.status(201).json({"state":array[x].state,"capital":array[x].capital_city});
+            return res.json({"state":array[x].state,"capital":array[x].capital_city});
         }
     } 
     return res.json({"message":"Invalid state abbreviation parameter"});
