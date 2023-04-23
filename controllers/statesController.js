@@ -95,13 +95,25 @@ const getAdmission = (req, res) => {
     return res.json({"message":"Invalid state abbreviation parameter"});
 }
 
-const getFunFacts = (req, res) => {
+const getFunFacts = async (req, res) => {
     let code = req.params.code;
     code = code.toUpperCase();
     for(x = 0; x < data.states.length; x++) {
         let array = Object.entries(data.states).map(([key,value])=>value);
         if(code == array[x].code){
-            return res.json({"state":array[x].state,"admitted":array[x].admission_date.toLocaleString()});
+            var facts = await State.findOne({ stateCode: code }).exec();
+
+            var result = data.states.filter(obj=> obj.code == code);
+            if(facts != null) {
+                var resultObject = { funfacts: facts.funfacts };
+                var resultIndex = Math.floor(Math.random() * resultObject.funfacts.length);
+                var funfacts = resultObject.funfacts[resultIndex];
+                var updatedReturn = {...result[0], funfacts };
+                
+                return res.json(updatedReturn);
+            }  
+            
+            return res.json(`{message:No Fun Facts found for ${result[0]}}`);
         }
     } 
     return res.json({"message":"Invalid state abbreviation parameter"});

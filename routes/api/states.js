@@ -20,7 +20,7 @@ router.route('/:code/population')
 router.route('/:code/admission')
     .get(statesController.getAdmission);
 
-router.route('/:code/funfacts')
+router.route('/:code/funfact')
     .get(statesController.getFunFacts);
 
 router.route('/:state')
