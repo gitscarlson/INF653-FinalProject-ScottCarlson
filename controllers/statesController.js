@@ -1,5 +1,5 @@
+const { stringify } = require('uuid');
 const State = require('../model/State');
-//glitch testing URL  https://glitch.com/edit/#!/import/github/gitscarlson/INF653-FinalProject-ScottCarlson
 //mongodb+srv://scott73carlson:EmmntYY4@cluster0.wteysmi.mongodb.net/StatesDB?retryWrites=true&w=majority
 
 const data = {
@@ -7,7 +7,8 @@ const data = {
     setStates: function (data) { this.states = data }
 }
 
-const getAllStates = (req, res) => {
+const getAllStates = async (req, res) => {
+    
     const parseURL = req.query.contig;
     if (parseURL == "true") {
         let contigFilter = data.states.filter(state => state.state !== 'Alaska' && state.state !== 'Hawaii');
@@ -16,6 +17,7 @@ const getAllStates = (req, res) => {
         let contigFilter = data.states.filter(state => state.state == 'Alaska' || state.state == 'Hawaii');
         return res.json(contigFilter);
     } else {
+        //mongoDB lookup for funfacts
         return res.json(data.states);
     }
     
@@ -34,13 +36,22 @@ const getStateCapital = (req, res) => {
     return res.json({"message":"Invalid state abbreviation parameter"});
 }
 
-const getState = (req, res) => {
+const getState = async (req, res) => {
+    //funfact lookup
     let code = req.params.state;
     code = code.toUpperCase();
     for(x = 0; x < data.states.length; x++) {
         let array = Object.entries(data.states).map(([key,value])=>value);
         if(code == array[x].code){
-            var result=data.states.filter(obj=> obj.code == code);
+            var facts = await State.findOne({ stateCode: code }).exec();
+
+            var result = data.states.filter(obj=> obj.code == code);
+            if(facts != null) {
+                const resultObject = { funfacts: facts.funfacts };
+                var updatedReturn = { ...result, ...resultObject };
+                return res.json(updatedReturn);
+            }  
+            
             return res.json(result);
         }
     } 
