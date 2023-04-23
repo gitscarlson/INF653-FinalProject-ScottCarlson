@@ -462,3 +462,12 @@
 20230423	14:01:20	1fb0175e-14b3-4f9a-8cd7-233524fabef8	GET	undefined	/states/ks/funfact
 20230423	14:02:10	ea2bd7b7-3a7a-4a71-80fc-3fb268cf14b2	GET	undefined	/states/ks/funfact
 20230423	14:07:04	58182e14-cdb0-4b22-b621-0bf502fc4cdb	GET	undefined	/states/ks/funfact
+20230423	14:10:53	1a916ea0-e326-4dcf-8131-5fe6779b004c	GET	undefined	/states/ks/funfact
+20230423	14:10:58	daf4b877-d3c8-47f5-a94b-1ade89e29a76	GET	undefined	/states/ks/funfact
+20230423	14:11:04	df26e8e5-6b52-4652-b88c-a766fb0de995	GET	undefined	/states/ks/funfact
+20230423	14:11:07	595806ec-2283-485a-b747-bf2d1a575233	GET	undefined	/states/ks/funfact
+20230423	14:11:09	39a85437-d127-47d8-a73b-0ef66bb0c41f	GET	undefined	/states/ks/funfact
+20230423	14:11:13	c3ff1103-6e00-4cd8-8820-a9f72ad8f1a1	GET	undefined	/states/MO/funfact
+20230423	14:11:22	a21cd125-e281-4c6d-abfc-a03d2a141610	GET	undefined	/states/MO/funfact
+20230423	14:11:29	01523b0b-8eb6-4af8-82f0-bc74d2d5fd0f	GET	undefined	/states/MO/funfact
+20230423	14:12:05	8eb6b6cd-45e6-47bb-9604-2f03e8108be6	GET	undefined	/states/MO/funfact

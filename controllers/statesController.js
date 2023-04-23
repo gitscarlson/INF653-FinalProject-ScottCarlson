@@ -107,8 +107,8 @@ const getFunFacts = async (req, res) => {
             if(facts != null) {
                 var resultObject = { funfacts: facts.funfacts };
                 var resultIndex = Math.floor(Math.random() * resultObject.funfacts.length);
-                var funfacts = resultObject.funfacts[resultIndex];
-                var updatedReturn = { funfacts };
+                var funfact = resultObject.funfacts[resultIndex];
+                var updatedReturn = { funfact };
                 
                 return res.json(updatedReturn);
             }  
