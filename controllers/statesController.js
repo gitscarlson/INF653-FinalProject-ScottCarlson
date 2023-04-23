@@ -102,8 +102,8 @@ const getFunFacts = async (req, res) => {
         let array = Object.entries(data.states).map(([key,value])=>value);
         if(code == array[x].code){
             var facts = await State.findOne({ stateCode: code }).exec();
-
             var result = data.states.filter(obj=> obj.code == code);
+            var updatedState = result[0].state;
             if(facts != null) {
                 var resultObject = { funfacts: facts.funfacts };
                 var resultIndex = Math.floor(Math.random() * resultObject.funfacts.length);
@@ -112,8 +112,8 @@ const getFunFacts = async (req, res) => {
                 
                 return res.json(updatedReturn);
             }  
-            
-            return res.json(`{message:No Fun Facts found for ${result[0]}}`);
+            var message = ("No Fun Facts found for " + updatedState);
+            return res.json({"message": message});
         }
     } 
     return res.json({"message":"Invalid state abbreviation parameter"});
