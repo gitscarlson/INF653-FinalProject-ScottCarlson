@@ -48,11 +48,12 @@ const getState = async (req, res) => {
             var result = data.states.filter(obj=> obj.code == code);
             if(facts != null) {
                 const resultObject = { funfacts: facts.funfacts };
-                var updatedReturn = { ...result, ...resultObject };
+                var updatedReturn = {...result[0], ...resultObject };
+                
                 return res.json(updatedReturn);
             }  
             
-            return res.json(result);
+            return res.json(result[0]);
         }
     } 
     return res.json({"message":"Invalid state abbreviation parameter"});
