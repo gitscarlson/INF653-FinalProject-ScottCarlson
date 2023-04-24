@@ -4,8 +4,6 @@ const app = express();
 const path = require('path');
 const cors = require('cors');
 const corsOptions = require('./config/corsOptions');
-const { logger } = require('./middleware/logEvents');
-const errorHandler = require('./middleware/errorHandler');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const connectDB = require('./config/dbConn');
@@ -15,7 +13,6 @@ const PORT = process.env.PORT || 3500;
 connectDB();
 
 // custom middleware logger
-app.use(logger);
 
 // Cross Origin Resource Sharing
 //app.use(cors(corsOptions));
@@ -50,7 +47,6 @@ app.all('*', (req, res) => {
     }
 }); 
 
-app.use(errorHandler);
 
 mongoose.connection.once('open', () => {
     console.log('Connected to MongoDB');
