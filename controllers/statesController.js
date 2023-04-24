@@ -123,18 +123,18 @@ const getFunFacts = async (req, res) => {
 const createFunFact = async (req, res) => {
     //Need to do a check if stateCode is a valid stateCode before submitting - this check is against the .json file
     for(x = 0; x < data.states.length; x++) {
-        let code = req.body.stateCode;
+        let code = req.params.code;
         code = code.toUpperCase();
         let array = Object.entries(data.states).map(([key,value])=>value);
         if(code == array[x].code){
-            if (!req?.body?.stateCode || !req?.body?.funfacts) {
-                console.log(req.body.stateCode);
+            console.log(code);
+            if (!req?.body?.funfacts) {
                 return res.status(400).json({ 'message': 'First and Lastnames are required'});
             }
         
             try {
                 const result = await State.create({
-                    stateCode: req.body.stateCode,
+                    stateCode: req.params.code,
                     funfacts: req.body.funfacts
                 });
         

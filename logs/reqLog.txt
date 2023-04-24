@@ -502,3 +502,11 @@
 20230424	10:08:28	7c2a98ff-f6c7-45e7-9bd8-e5291232b555	POST	undefined	/states/NY/funfacts
 20230424	10:09:54	1501171a-3f58-4e4e-8d22-736a559dd70e	POST	undefined	/states/NY/funfact
 20230424	10:16:55	86d25ef3-9833-4f90-becb-886b5451abb0	POST	undefined	/states/NY/funfact
+20230424	11:30:03	3072d36d-7807-474c-aeed-6dace72ede43	GET	undefined	/states/mi/funfact
+20230424	11:30:03	7a382249-fe1b-4f8c-b713-1e8ddaedc96b	GET	undefined	/favicon.ico
+20230424	11:30:17	512eb21d-322a-446b-bcc7-baaf45162a2d	POST	undefined	/states/NY/funfact
+20230424	11:30:54	8ce76ec8-eef5-48a6-adb2-26840869a7ec	POST	undefined	/states/RH/funfact
+20230424	11:31:46	1a2a280a-aa18-424d-8d1a-5c1d429b8239	POST	undefined	/states/RH/funfact
+20230424	11:32:02	e36c26b2-617d-4b03-9e83-9b792b5091f9	POST	undefined	/states/RI/funfact
+20230424	11:38:31	5bfd09ce-2cc9-41a9-9f05-7a84a0e77f33	POST	undefined	/states/UT/funfact
+20230424	11:40:06	87a3afdd-d7c3-4428-a073-bede6ab033bc	POST	undefined	/states/UT/funfact
