@@ -129,7 +129,7 @@ const createFunFact = async (req, res) => {
         if(code == array[x].code){
             console.log(code);
             if (!req?.body?.funfacts) {
-                return res.status(400).json({ 'message': 'First and Lastnames are required'});
+                return res.status(400).json({ 'message': 'State fun facts value required'});
             }
         
             try {
