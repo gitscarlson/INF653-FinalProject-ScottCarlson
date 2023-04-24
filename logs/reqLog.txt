@@ -497,3 +497,8 @@
 20230423	15:32:05	2a05f0a4-1369-43f6-8b93-f5856cc29af8	GET	undefined	/states/mi/funfact
 20230423	15:33:39	01655742-778c-4dd1-a2b5-c01ee3b1eda0	GET	undefined	/states/mi/funfact
 20230423	15:35:39	a4bce750-28f2-4542-8707-d58439484979	GET	undefined	/states/mi/funfact
+20230424	10:05:52	b94cb62a-a45c-4fd3-93bf-8f0cbc72ba26	POST	undefined	/states/NY/funfacts
+20230424	10:06:15	42be7584-9848-4c70-a7df-31998caf3b37	POST	undefined	/states/NY/funfacts
+20230424	10:08:28	7c2a98ff-f6c7-45e7-9bd8-e5291232b555	POST	undefined	/states/NY/funfacts
+20230424	10:09:54	1501171a-3f58-4e4e-8d22-736a559dd70e	POST	undefined	/states/NY/funfact
+20230424	10:16:55	86d25ef3-9833-4f90-becb-886b5451abb0	POST	undefined	/states/NY/funfact

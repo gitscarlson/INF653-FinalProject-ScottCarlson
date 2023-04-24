@@ -4,7 +4,6 @@ const statesController = require('../../controllers/statesController');
 
 router.route('/')
     .get(statesController.getAllStates)
-    .post(statesController.createFunFact);
     //.put(statesController.updateEmployee)
     //.delete(statesController.deleteEmployee);
 
@@ -21,7 +20,8 @@ router.route('/:code/admission')
     .get(statesController.getAdmission);
 
 router.route('/:code/funfact')
-    .get(statesController.getFunFacts);
+    .get(statesController.getFunFacts)
+    .post(statesController.createFunFact);
 
 router.route('/:state')
     .get(statesController.getState);
