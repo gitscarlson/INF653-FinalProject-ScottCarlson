@@ -127,7 +127,8 @@ const createFunFact = async (req, res) => {
         code = code.toUpperCase();
         let array = Object.entries(data.states).map(([key,value])=>value);
         if(code == array[x].code){
-        
+            var facts = await State.findOne({ stateCode: code }).exec();
+            console.log(facts);
             if (!req?.body?.funfacts) {
                 return res.status(400).json({ 'message': 'State fun facts value required'});
             }
@@ -137,13 +138,21 @@ const createFunFact = async (req, res) => {
             }
             
             try {
+                if(!facts) {
                 const result = await State.create({
-                    stateCode: req.params.code,
-                    funfacts: req.body.funfacts,
-                    upsert: true
+                    stateCode: code,
+                    funfacts: req.body.funfacts
                 });
-        
                 return res.status(201).json(result);
+            } else {
+                const result = await State.findOneAndUpdate(
+                    { stateCode: code },
+                    { $push: { funfacts: req.body.funfacts } },
+                    { upsert: true, new: true }
+                  );
+                return res.status(201).json(result);
+            }
+                
             } catch (err) {
                 console.error(err);
             }
