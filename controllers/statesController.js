@@ -127,14 +127,15 @@ const createFunFact = async (req, res) => {
         code = code.toUpperCase();
         let array = Object.entries(data.states).map(([key,value])=>value);
         if(code == array[x].code){
+        
+            if (!req?.body?.funfacts) {
+                return res.status(400).json({ 'message': 'State fun facts value required'});
+            }
             var arrayCheck = req.body.funfacts;
             if (!Array.isArray(arrayCheck)){
                 return res.status(400).json({ 'message': 'State fun facts value must be an array'});
             }
-            if (!req?.body?.funfacts) {
-                return res.status(400).json({ 'message': 'State fun facts value required'});
-            }
-        
+            
             try {
                 const result = await State.create({
                     stateCode: req.params.code,
