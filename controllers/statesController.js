@@ -128,7 +128,7 @@ const createFunFact = async (req, res) => {
         let array = Object.entries(data.states).map(([key,value])=>value);
         if(code == array[x].code){
             var arrayCheck = req.body.funfacts;
-            if (!arrayCheck){
+            if (!Array.isArray(arrayCheck)){
                 return res.status(400).json({ 'message': 'State fun facts value must be an array'});
             }
             if (!req?.body?.funfacts) {
