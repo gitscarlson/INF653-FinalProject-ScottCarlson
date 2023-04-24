@@ -139,7 +139,8 @@ const createFunFact = async (req, res) => {
             try {
                 const result = await State.create({
                     stateCode: req.params.code,
-                    funfacts: req.body.funfacts
+                    funfacts: req.body.funfacts,
+                    upsert: true
                 });
         
                 return res.status(201).json(result);
