@@ -21,7 +21,8 @@ router.route('/:code/admission')
 
 router.route('/:code/funfact')
     .get(statesController.getFunFacts)
-    .post(statesController.createFunFact);
+    .post(statesController.createFunFact)
+    .delete(statesController.deleteFunFact);
 
 router.route('/:state')
     .get(statesController.getState);

@@ -161,19 +161,45 @@ const createFunFact = async (req, res) => {
     return res.json({"message":"Invalid state abbreviation parameter"});
 }
 
-const updateEmployee = async (req, res) => {
-    if(!req?.body?.id) {
-        return res.status(400).json({ 'message': 'ID paramater is required'});
-    }
-
-    const employee = await Employee.findOne({ _id: req.body.id }).exec();
-    if (!employee) {
-        return res.status(204).json({ "message": `No employee matches ID ${req.body.id} `});
-    }
-    if (req.body?.firstname) employee.firstname = req.body.firstname;
-    if (req.body?.lastname) employee.lastname = req.body.lastname;
-    const result = await employee.save();
-    res.json(result);
+const deleteFunFact = async (req, res) => {
+    let code = req.params.code;
+    code = code.toUpperCase();
+    for(x = 0; x < data.states.length; x++) {
+        let array = Object.entries(data.states).map(([key,value])=>value);
+        if(code == array[x].code){
+            var index = req.body.index;
+            if(!index){
+                return res.status(400).json({ "message": "State fun fact index value required"});
+            }
+            var facts = await State.findOne({ stateCode: code }).exec();
+            var result = data.states.filter(obj=> obj.code == code);
+            var updatedState = result[0].state;
+            if(facts != null) {
+                var resultObject = { funfacts: facts.funfacts };
+                if(index > resultObject.length){
+                    return res.status(400).json({ "message": "No Fun Fact found at that index for <STATE NAME>"});
+                }
+                const deleteResult = await State.findOneAndUpdate(
+                    { stateCode: code },
+                    { $unset: { [`funfacts.${index-1}`]: 1 } },
+                    { new: true }
+                  );
+                  await State.findOneAndUpdate(
+                    { stateCode: code },
+                    { $pull: { funfacts: null } },
+                    { new: true }
+                  );
+                  console.log(deleteResult);
+                //need to use the index variable to delete the funfact also need to check if index is valid
+                //const factDelete  = await State.deleteOne( State.funfacts[index-1] ).exec();
+                //console.log(factDelete);
+                return res.json(deleteResult);
+            }  
+            var message = ("No Fun Facts found for " + updatedState);
+            return res.json({"message": message});
+        }
+    } 
+    return res.json({"message":"Invalid state abbreviation parameter"});
 }
 
 const deleteEmployee = async (req, res) => {
@@ -197,5 +223,5 @@ module.exports = {
     getAdmission,
     createFunFact,
     getFunFacts,
-    deleteEmployee
+    deleteFunFact
 }
