@@ -177,7 +177,8 @@ const deleteFunFact = async (req, res) => {
             if(facts != null) {
                 var resultObject = { funfacts: facts.funfacts };
                 if(index > resultObject.length){
-                    return res.status(400).json({ "message": "No Fun Fact found at that index for <STATE NAME>"});
+                    var message = ("No Fun Fact found at that index for " + updatedState);
+                    return res.json({"message": message});
                 }
                 const deleteResult = await State.findOneAndUpdate(
                     { stateCode: code },
