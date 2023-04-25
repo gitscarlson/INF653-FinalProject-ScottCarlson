@@ -17,7 +17,22 @@ const getAllStates = async (req, res) => {
         let contigFilter = data.states.filter(state => state.state == 'Alaska' || state.state == 'Hawaii');
         return res.json(contigFilter);
     } else {
-        //mongoDB lookup for funfacts
+        for (let i = 0; i < data.states.length; i++) {
+            const code = data.states[i].code;
+            // Search for a corresponding state in MongoDB by stateCode
+            const mongoLookup = await State.findOne({ stateCode: code });
+
+            // If a matching state is found in MongoDB, add its funfacts to the corresponding state in the JSON file
+            if (mongoLookup) {
+                var updateFacts = mongoLookup.funfacts;
+                //console.log(updateFacts);
+                data.states[i] = {
+                    ...data.states[i],
+                    funfacts: mongoLookup.funfacts
+                  };
+            }
+        }
+
         return res.json(data.states);
     }
     
