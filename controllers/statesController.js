@@ -194,7 +194,7 @@ const deleteFunFact = async (req, res) => {
                 //need to use the index variable to delete the funfact also need to check if index is valid
                 //const factDelete  = await State.deleteOne( State.funfacts[index-1] ).exec();
                 //console.log(factDelete);
-                return res.json(deleteResult);
+                return await res.json(deleteResult);
             }  
             var message = ("No Fun Facts found for " + updatedState);
             return res.json({"message": message});
