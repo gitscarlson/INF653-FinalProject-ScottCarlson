@@ -218,16 +218,41 @@ const deleteFunFact = async (req, res) => {
     return res.json({"message":"Invalid state abbreviation parameter"});
 }
 
-const deleteEmployee = async (req, res) => {
-    if (!req?.body?.id) return res.status(400).json({ 'message': 'Employee ID required'});
+const updateFunFact = async (req, res) => {
+    //Need to do a check if stateCode is a valid stateCode before submitting - this check is against the .json file
+    for(x = 0; x < data.states.length; x++) {
+        let code = req.params.code;
+        code = code.toUpperCase();
+        let array = Object.entries(data.states).map(([key,value])=>value);
+        if(code == array[x].code){
+            var facts = await State.findOne({ stateCode: code }).exec();
+            console.log(facts);
+            if (!req?.body?.funfacts) {
+                return res.status(400).json({ 'message': 'State fun fact value required'});
+            }
+            if (!req?.body?.index) {
+                return res.status(400).json({ 'message': 'State fun fact index value required'});
+            }
+            var arrayCheck = req.body.funfacts;
+            if (!Array.isArray(arrayCheck)){
+                return res.status(400).json({ 'message': 'State fun facts value must be an array'});
+            }
+            
+            try {
+                const result = await State.findOneAndUpdate(
+                    { stateCode: code },
+                    { $push: { funfacts: req.body.funfacts } },
+                    { upsert: true, new: true }
+                  );
 
-    const employee  = await Employee.findOne({ _id: req.body.id }).exec();
-    if (!employee) {
-        return res.status(204).json({ "message": `No employee matches ID ${req.body.id} `});
-    }
-    
-    const result = await employee.deleteOne({ _id: req.body.id });
-    res.json(result);
+                return res.status(201).json(result);
+                            
+            } catch (err) {
+                console.error(err);
+            }
+        }
+    } 
+    return res.json({"message":"Invalid state abbreviation parameter"});
 }
 
 module.exports = { 
@@ -239,5 +264,6 @@ module.exports = {
     getAdmission,
     createFunFact,
     getFunFacts,
-    deleteFunFact
+    deleteFunFact,
+    updateFunFact
 }
