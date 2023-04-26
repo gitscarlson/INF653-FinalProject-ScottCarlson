@@ -223,6 +223,7 @@ const updateFunFact = async (req, res) => {
         let code = req.params.code;
         code = code.toUpperCase();
         let array = Object.entries(data.states).map(([key,value])=>value);
+
         if(code == array[x].code){
             var facts = await State.findOne({ stateCode: code }).exec();
 
@@ -237,6 +238,11 @@ const updateFunFact = async (req, res) => {
             try {
                 const index = req.body.index;
                 const funfacts = facts.funfacts;
+                if(!funfacts) {
+                    var updatedState = result[0].state;
+                    var message = ("No Fun Facts found for " + updatedState);
+                    return res.status(400).json({ 'message': message });
+                }
                 if (index >= funfacts.length) {
                     return res.status(400).json({ 'message': 'Invalid funfact index' });
                 }
@@ -254,7 +260,8 @@ const updateFunFact = async (req, res) => {
             }
         }
     } 
-    return res.json({"message":"Invalid state abbreviation parameter"});
+    //need to update for dynamic state
+    return res.json({"message":"No Fun Facts found for Arizona"});
 }
 
 module.exports = { 
