@@ -92,7 +92,7 @@ const getPopulation = (req, res) => {
     for(x = 0; x < data.states.length; x++) {
         let array = Object.entries(data.states).map(([key,value])=>value);
         if(code == array[x].code){
-            return res.json({"state":array[x].state,"population":array[x].population.toLocaleString()});
+            return res.json({"state":array[x].state,"population":array[x].population.toLocaleString()   });
         }
     } 
     return res.json({"message":"Invalid state abbreviation parameter"});
@@ -226,23 +226,25 @@ const updateFunFact = async (req, res) => {
         if(code == array[x].code){
             var facts = await State.findOne({ stateCode: code }).exec();
             console.log(facts);
-            if (!req?.body?.funfact) {
+            if (!req?.body?.funfacts) {
                 return res.status(400).json({ 'message': 'State fun fact value required'});
             }
             if (!req?.body?.index) {
                 return res.status(400).json({ 'message': 'State fun fact index value required'});
             }
-            var arrayCheck = req.body.funfacts;
-            if (!Array.isArray(arrayCheck)){
-                return res.status(400).json({ 'message': 'State fun facts value must be an array'});
-            }
             
             try {
+                const index = req.body.index;
+                const funfacts = facts.funfacts;
+                if (index >= funfacts.length) {
+                    return res.status(400).json({ 'message': 'Invalid funfact index' });
+                }
+                funfacts[index-1] = req.body.funfacts;
                 const result = await State.findOneAndUpdate(
-                    { stateCode: code },
-                    { $push: { funfacts: req.body.funfacts } },
-                    { upsert: true, new: true }
-                  );
+                { stateCode: code },
+                { $set: { funfacts: funfacts } },
+                { upsert: true, new: true }
+                );
 
                 return res.status(201).json(result);
                             
