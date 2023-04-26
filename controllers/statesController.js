@@ -226,11 +226,12 @@ const updateFunFact = async (req, res) => {
         if(code == array[x].code){
             var facts = await State.findOne({ stateCode: code }).exec();
 
-            if (!req?.body?.funfacts) {
-                return await res.status(400).json({ 'message': 'State fun fact value required'});
+            if (!req.body.funfacts) {
+                return res.status(400).json({ 'message': 'State fun fact value required'});
             }
-            if (!req?.body?.index) {
-                return await res.status(400).json({ 'message': 'State fun fact index value required'});
+
+            if (!req.body.index) {
+                return res.status(400).json({ 'message': 'State fun fact index value required'});
             }
             
             try {
