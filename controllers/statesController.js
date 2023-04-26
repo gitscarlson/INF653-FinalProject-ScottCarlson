@@ -197,17 +197,17 @@ const deleteFunFact = async (req, res) => {
                     { $unset: { [`funfacts.${index-1}`]: 1 } },
                     { new: true }
                   );
-                  console.log(deleteResult);
-                  if(!deleteResult.funfacts[index-1]){
-                    var message = ("No Fun Fact found at that index for " + updatedState);
-                    return res.json({"message": message});
-                }
                   await State.findOneAndUpdate(
                     { stateCode: code },
                     { $pull: { funfacts: null } },
                     { new: true }
                   );
-                
+                  console.log(deleteResult);
+                  if(!deleteResult.funfacts[index-1]){
+                    var message = ("No Fun Fact found at that index for " + updatedState);
+                    return res.json({"message": message});
+                }
+                  
                 return await res.json(deleteResult);
             }  
             var message = ("No Fun Facts found for " + updatedState);
@@ -225,7 +225,7 @@ const updateFunFact = async (req, res) => {
         let array = Object.entries(data.states).map(([key,value])=>value);
         if(code == array[x].code){
             var facts = await State.findOne({ stateCode: code }).exec();
-            console.log(facts);
+
             if (!req?.body?.funfacts) {
                 return res.status(400).json({ 'message': 'State fun fact value required'});
             }
