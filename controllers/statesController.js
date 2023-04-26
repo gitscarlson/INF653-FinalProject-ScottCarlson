@@ -244,7 +244,9 @@ const updateFunFact = async (req, res) => {
                     return res.status(400).json({ 'message': message });
                 }
                 if (index >= funfacts.length) {
-                    return res.status(400).json({ 'message': 'Invalid funfact index' });
+                    var updatedState = result[0].state;
+                    var message = ("No Fun Fact found at that index for " + updatedState);
+                    return res.status(400).json({ 'message': message });
                 }
                 funfacts[index-1] = req.body.funfact;
                 const result = await State.findOneAndUpdate(
