@@ -249,8 +249,7 @@ const updateFunFact = async (req, res) => {
                 //    return res.status(400).json({ 'message': message });
                 //}
                 funfacts[index-1] = req.body.funfact;
-                var funfactCheck = funfacts[index-1];
-                if(!funfactCheck) {
+                if(!funfacts[index-1]) {
                     var updatedState = result[0].state;
                     var message = ("No Fun Fact found at that index for " + updatedState);
                     return res.status(400).json({ 'message': message });
