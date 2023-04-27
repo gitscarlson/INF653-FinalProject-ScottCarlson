@@ -179,6 +179,9 @@ const createFunFact = async (req, res) => {
 const deleteFunFact = async (req, res) => {
     let code = req.params.code;
     code = code.toUpperCase();
+    if(req.body.index == o) {
+        return res.status(400).json({ "message": "Index can't be 0 based"});
+    }
     for(x = 0; x < data.states.length; x++) {
         let array = Object.entries(data.states).map(([key,value])=>value);
         if(code == array[x].code){
