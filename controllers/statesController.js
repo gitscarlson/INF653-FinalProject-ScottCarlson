@@ -202,13 +202,13 @@ const deleteFunFact = async (req, res) => {
                     { $pull: { funfacts: null } },
                     { new: true }
                   );
-                  console.log(deleteResult);
+                
                   if(!deleteResult.funfacts[index-1]){
                     var message = ("No Fun Fact found at that index for " + updatedState);
                     return res.json({"message": message});
                 }
                   
-                return await res.json(deleteResult);
+                return res.json(deleteResult);
             }  
             var message = ("No Fun Facts found for " + updatedState);
             return res.json({"message": message});
