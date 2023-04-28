@@ -203,7 +203,7 @@ const deleteFunFact = async (req, res) => {
                     { new: true }
                   );
                 
-                  if(!deleteResult.funfacts[index-1]){
+                  if(!deleteResult.funfacts[index]){
                     var message = ("No Fun Fact found at that index for " + updatedState);
                     return res.json({"message": message});
                 }
